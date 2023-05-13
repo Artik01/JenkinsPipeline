@@ -12,7 +12,7 @@ pipeline {
         stage('deploy-to-dev') {
             steps {
                 script{
-                    deploy("devel",7001)
+                    deploy("dev",7001)
                 }
             }
         }
