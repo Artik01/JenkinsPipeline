@@ -4,47 +4,47 @@ pipeline {
     stages {
         stage('install-pip-deps') {
             steps {
-                echo 'Hello World'
+                echo 'Installing required libraries'
             }
         }
         stage('deploy-to-dev') {
             steps {
-                echo 'Hello World'
+                echo 'Deploying into dev environment'
             }
         }
         stage('tests-on-dev') {
             steps {
-                echo 'Hello World'
+                echo 'Testing of programm from dev environment'
             }
         }
         stage('deploy-to-staging') {
             steps {
-                echo 'Hello World'
+                echo 'Deploying into staging'
             }
         }
         stage('tests-on-staging') {
             steps {
-                echo 'Hello World'
+                echo 'Testing of programm from staging'
             }
         }
         stage('deploy-to-preprod') {
             steps {
-                echo 'Hello World'
+                echo 'Deploying into preprodaction'
             }
         }
         stage('tests-on-preprod') {
             steps {
-                echo 'Hello World'
+                echo 'Testing of programm from preprodaction'
             }
         }
         stage('deploy-to-prod') {
             steps {
-                echo 'Hello World'
+                echo 'Deploying into prodaction'
             }
         }
         stage('tests-on-prod') {
             steps {
-                echo 'Hello World'
+                echo 'Testing of programm from prodaction'
             }
         }
     }
