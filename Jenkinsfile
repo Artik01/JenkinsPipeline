@@ -84,7 +84,7 @@ def deploy(String env, int port) {
 
 def test(String env) {
     echo "Testing of programm from ${env}"
-    git branch: 'main', url: 'https://github.com/mtararujs/course-js-api-framework'
+    git branch: 'main', url: 'https://github.com/mtararujs/course-js-api-framework.git'
     sh "npm install"
     sh "npm run greetings greetings_${env}"
 }
