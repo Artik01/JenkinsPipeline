@@ -2,47 +2,47 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('install-pip-deps') {
             steps {
                 echo 'Hello World'
             }
         }
-        stage('Hello') {
+        stage('deploy-to-dev') {
             steps {
                 echo 'Hello World'
             }
         }
-        stage('Hello') {
+        stage('tests-on-dev') {
             steps {
                 echo 'Hello World'
             }
         }
-        stage('Hello') {
+        stage('deploy-to-staging') {
             steps {
                 echo 'Hello World'
             }
         }
-        stage('Hello') {
+        stage('tests-on-staging') {
             steps {
                 echo 'Hello World'
             }
         }
-        stage('Hello') {
+        stage('deploy-to-preprod') {
             steps {
                 echo 'Hello World'
             }
         }
-        stage('Hello') {
+        stage('tests-on-preprod') {
             steps {
                 echo 'Hello World'
             }
         }
-        stage('Hello') {
+        stage('deploy-to-prod') {
             steps {
                 echo 'Hello World'
             }
         }
-        stage('Hello') {
+        stage('tests-on-prod') {
             steps {
                 echo 'Hello World'
             }
