@@ -4,48 +4,87 @@ pipeline {
     stages {
         stage('install-pip-deps') {
             steps {
-                echo 'Installing required libraries'
+                script{
+                    install()
+                }
             }
         }
         stage('deploy-to-dev') {
             steps {
-                echo 'Deploying into dev environment'
+                script{
+                    deploy("devel",7001)
+                }
             }
         }
         stage('tests-on-dev') {
             steps {
-                echo 'Testing of programm from dev environment'
+                script{
+                    test("dev")
+                }
             }
         }
         stage('deploy-to-staging') {
             steps {
-                echo 'Deploying into staging'
+                script{
+                    deploy("staging",7002)
+                }
             }
         }
         stage('tests-on-staging') {
             steps {
-                echo 'Testing of programm from staging'
+                script{
+                    test("staging")
+                }
             }
         }
         stage('deploy-to-preprod') {
             steps {
-                echo 'Deploying into preprodaction'
+                script{
+                    deploy("preprod",7003)
+                }
             }
         }
         stage('tests-on-preprod') {
             steps {
-                echo 'Testing of programm from preprodaction'
+                script{
+                    test("preprod")
+                }
             }
         }
         stage('deploy-to-prod') {
             steps {
-                echo 'Deploying into prodaction'
+                script{
+                    deploy("prod",7004)
+                }
             }
         }
         stage('tests-on-prod') {
             steps {
-                echo 'Testing of programm from prodaction'
+                script{
+                    test("prod")
+                }
             }
         }
     }
+}
+
+def install() {
+    echo "Installing required libraries"
+    git branch: 'main', url: 'https://github.com/mtararujs/python-greetings.git'
+    sh "ls"
+    sh "pip install -r requirements.txt"
+}
+
+def deploy(String env, int port) {
+    echo "Deploying into ${env}"
+    git branch: 'main', url: 'https://github.com/mtararujs/python-greetings.git'
+    sh "pm2 delete greetings-app-${env} & set \"errorlevel=0\""
+    sh "pm2 start app.py --name greetings-app-${env} -- --port ${port}"
+}
+
+def test(String env) {
+    echo "Testing of programm from ${env}"
+    git branch: 'main', url: 'https://github.com/mtararujs/course-js-api-framework'
+    sh "npm install"
+    sh "npm run greetings greetings_${env}"
 }
