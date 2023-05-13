@@ -78,8 +78,8 @@ def install() {
 def deploy(String env, int port) {
     echo "Deploying into ${env}"
     git branch: 'main', changelog: false, poll: false, url: 'https://github.com/mtararujs/python-greetings.git'
-    sh "pm2 delete greetings-app-${env} & set \"errorlevel=0\""
-    sh "pm2 start app.py --name greetings-app-${env} -- --port ${port}"
+    sh "pm2 delete \"greetings-app-${env}\" & set \"errorlevel=0\""
+    sh "pm2 start app.py --name \"greetings-app-${env}\" -- --port ${port}"
 }
 
 def test(String env) {
