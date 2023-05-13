@@ -71,7 +71,7 @@ pipeline {
 def install() {
     echo "Installing required libraries"
     git branch: 'main', changelog: false, poll: false, url: 'https://github.com/mtararujs/python-greetings.git'
-    sh "ls"
+    //sh "ls"
     sh "pip install -r requirements.txt"
 }
 
