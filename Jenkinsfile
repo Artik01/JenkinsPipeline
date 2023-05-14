@@ -71,20 +71,19 @@ pipeline {
 def install() {
     echo "Installing required libraries"
     git branch: 'main', changelog: false, poll: false, url: 'https://github.com/mtararujs/python-greetings.git'
-    bat "dir"
-    bat "pip install -r requirements.txt"
+    bat "call pip install -r requirements.txt"
 }
 
 def deploy(String env, int port) {
     echo "Deploying into ${env}"
     git branch: 'main', changelog: false, poll: false, url: 'https://github.com/mtararujs/python-greetings.git'
-    bat "pm2 delete greetings-app-${env} & set \"ErrorLevel=0\""
-    bat "pm2 start app.py --name greetings-app-${env} -- --port ${port}"
+    bat "call pm2 delete greetings-app-${env} & set \"ErrorLevel=0\""
+    bat "call pm2 start app.py --name greetings-app-${env} -- --port ${port}"
 }
 
 def test(String env) {
     echo "Testing of programm from ${env}"
     git branch: 'main', changelog: false, poll: false, url: 'https://github.com/mtararujs/course-js-api-framework.git'
-    bat "npm install"
-    bat "npm run greetings greetings_${env}"
+    bat "call npm install"
+    bat "call npm run greetings greetings_${env}"
 }
